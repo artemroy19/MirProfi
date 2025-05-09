@@ -73,6 +73,7 @@ const TutorForm: React.FC<TutorFormProps> = ({ addTutor }) => {
         lessonType,
         phone,
         photo,
+        likes: 0
       });
       
       // Сброс формы

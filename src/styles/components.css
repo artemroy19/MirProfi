@@ -565,3 +565,135 @@
     animation: selectPulse 1s ease;
   }
 }
+
+/* Login styles */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background);
+  padding: 1rem;
+}
+
+.login-card {
+  background-color: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header user info */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 100px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.username {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-light);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.logout-btn:hover {
+  color: var(--color-error);
+  background-color: var(--color-secondary);
+}
+
+/* About page */
+.about-container {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  padding: 2rem 1rem;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.back-button:hover {
+  background-color: var(--color-secondary);
+}
+
+.about-content h1 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.about-section {
+  margin-bottom: 2rem;
+}
+
+.about-section h2 {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.about-section ul,
+.about-section ol {
+  padding-left: 1.5rem;
+}
+
+.about-section li {
+  margin-bottom: 0.5rem;
+}

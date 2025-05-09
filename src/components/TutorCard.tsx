@@ -42,6 +42,7 @@ const TutorCard: React.FC<TutorCardProps> = ({ tutor, onClick }) => {
         <div className="tutor-price">
           {formatPrice(tutor.price)}
         </div>
+         
       </div>
     </div>
   );

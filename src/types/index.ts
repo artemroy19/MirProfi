@@ -1,4 +1,8 @@
 export type Role = 'student' | 'tutor';
+export interface User {
+  username: string;
+  isLoggedIn: boolean;
+}
 
 export interface Tutor {
   id: string;
@@ -10,6 +14,7 @@ export interface Tutor {
   lessonType: 'online' | 'offline' | 'both';
   phone: string;
   isCurrentUser?: boolean;
+  likes: number;
 }
 
 export interface FilterOptions {
@@ -17,4 +22,9 @@ export interface FilterOptions {
   minPrice: number;
   maxPrice: number;
   lessonType: string;
+}
+
+export interface AuthFormData {
+  username: string;
+  password: string;
 }
