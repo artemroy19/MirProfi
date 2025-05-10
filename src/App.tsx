@@ -1,5 +1,5 @@
 // Main application component that handles routing and state management
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import Header from './components/Header';
 import About from './components/About';
 import TutorForm from './components/TutorForm';
@@ -55,15 +55,6 @@ function App() {
     
     setTutors([...updatedTutors, newTutor]);
     setCurrentRole('student');
-  };
-
-  // Like functionality
-  const handleLike = (tutorId: string) => {
-    setTutors(prev => prev.map(tutor => 
-      tutor.id === tutorId 
-        ? { ...tutor, likes: tutor.likes + 1 }
-        : tutor
-    ));
   };
 
   // Conditional rendering based on authentication and navigation state

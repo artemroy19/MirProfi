@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Tutor, FilterOptions } from '../types';
 import TutorCard from './TutorCard';
-import TutorModal from './TutorModal';
+import TutorDetails from './TutorDetails';
 import Filters from './Filters';
 import { filterTutors } from '../utils/helpers';
 import { UserCheck } from 'lucide-react';
@@ -19,22 +19,18 @@ const TutorList: React.FC<TutorListProps> = ({ tutors }) => {
     lessonType: 'Все типы',
   });
 
-  // Отделяем анкету текущего пользователя
   const currentUserTutor = tutors.find(tutor => tutor.isCurrentUser);
   const otherTutors = tutors.filter(tutor => !tutor.isCurrentUser);
-  
-  // Применяем фильтры только к анкетам других пользователей
   const filteredTutors = filterTutors(otherTutors, filters);
 
-  const openTutorModal = (tutor: Tutor) => {
-    setSelectedTutor(tutor);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeTutorModal = () => {
-    setSelectedTutor(null);
-    document.body.style.overflow = 'auto';
-  };
+  if (selectedTutor) {
+    return (
+      <TutorDetails 
+        tutor={selectedTutor}
+        onBack={() => setSelectedTutor(null)}
+      />
+    );
+  }
 
   return (
     <div className="container slide-in-bottom">
@@ -49,7 +45,7 @@ const TutorList: React.FC<TutorListProps> = ({ tutors }) => {
           <div className="tutor-grid">
             <TutorCard 
               tutor={currentUserTutor} 
-              onClick={() => openTutorModal(currentUserTutor)}
+              onClick={() => setSelectedTutor(currentUserTutor)}
             />
           </div>
         </div>
@@ -63,7 +59,7 @@ const TutorList: React.FC<TutorListProps> = ({ tutors }) => {
             <TutorCard 
               key={tutor.id} 
               tutor={tutor} 
-              onClick={() => openTutorModal(tutor)}
+              onClick={() => setSelectedTutor(tutor)}
             />
           ))}
         </div>
@@ -83,10 +79,6 @@ const TutorList: React.FC<TutorListProps> = ({ tutors }) => {
             Сбросить фильтры
           </button>
         </div>
-      )}
-      
-      {selectedTutor && (
-        <TutorModal tutor={selectedTutor} onClose={closeTutorModal} />
       )}
     </div>
   );
