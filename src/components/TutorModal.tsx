@@ -22,17 +22,6 @@ const TutorModal: React.FC<TutorModalProps> = ({ tutor, onClose }) => {
   };
 
   // Получение отображаемого текста для типа занятий
-  const getLessonTypeText = (type: 'online' | 'offline' | 'both') => {
-    switch (type) {
-      case 'online':
-        return 'Онлайн';
-      case 'offline':
-        return 'Оффлайн';
-      case 'both':
-        return 'Онлайн и оффлайн';
-    }
-  };
-
   return (
     <div className="modal-overlay active" onClick={handleOverlayClick}>
       <div className="modal-content" onClick={handleModalClick}>

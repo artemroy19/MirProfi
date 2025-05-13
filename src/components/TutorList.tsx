@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tutor, FilterOptions } from '../types';
+import { Tutor, FilterOptions, Comment } from '../types';
 import TutorCard from './TutorCard';
 import TutorDetails from './TutorDetails';
 import Filters from './Filters';
@@ -8,9 +8,11 @@ import { UserCheck } from 'lucide-react';
 
 interface TutorListProps {
   tutors: Tutor[];
+  currentUsername: string;
+  onAddComment: (tutorId: string, comment: Comment) => void;
 }
 
-const TutorList: React.FC<TutorListProps> = ({ tutors }) => {
+const TutorList: React.FC<TutorListProps> = ({ tutors, currentUsername, onAddComment }) => {
   const [selectedTutor, setSelectedTutor] = useState<Tutor | null>(null);
   const [filters, setFilters] = useState<FilterOptions>({
     subject: 'Все предметы',
@@ -28,6 +30,8 @@ const TutorList: React.FC<TutorListProps> = ({ tutors }) => {
       <TutorDetails 
         tutor={selectedTutor}
         onBack={() => setSelectedTutor(null)}
+        currentUsername={currentUsername}
+        onAddComment={onAddComment}
       />
     );
   }

@@ -1,4 +1,4 @@
-import { Tutor } from '../types';
+import { Tutor, Comment } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
 // Заготовленные фотографии для преподавателей
@@ -27,6 +27,58 @@ export const subjects = [
   'Обществознание',
 ];
 
+// Генерация случайных комментариев
+const generateRandomComments = (tutorId: string): Comment[] => {
+  const commentCount = Math.floor(Math.random() * 5) + 2; // 2-6 комментариев
+  const comments: Comment[] = [];
+  
+  const usernames = [
+    'Анна К.',
+    'Михаил С.',
+    'Екатерина В.',
+    'Дмитрий П.',
+    'Ольга М.',
+    'Сергей Н.',
+    'Мария Д.',
+    'Александр Р.',
+  ];
+  
+  const commentTexts = [
+    'Отличный преподаватель! Очень доступно объясняет материал.',
+    'Помог подготовиться к экзамену, рекомендую!',
+    'Интересные занятия, время пролетает незаметно.',
+    'Профессионал своего дела, знает как заинтересовать ученика.',
+    'Хороший педагог, но иногда торопится с объяснениями.',
+    'Всё понятно объясняет, терпеливо отвечает на вопросы.',
+    'Отличная методика преподавания, ребёнку очень нравится.',
+    'Замечательный преподаватель, будем продолжать занятия.',
+  ];
+  
+  for (let i = 0; i < commentCount; i++) {
+    const randomUsername = usernames[Math.floor(Math.random() * usernames.length)];
+    const randomText = commentTexts[Math.floor(Math.random() * commentTexts.length)];
+    const randomRating = Math.floor(Math.random() * 3) + 3; // Рейтинг от 3 до 5
+    
+    comments.push({
+      id: uuidv4(),
+      tutorId,
+      username: randomUsername,
+      text: randomText,
+      rating: randomRating,
+      createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000), // Случайная дата за последние 30 дней
+    });
+  }
+  
+  return comments.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+};
+
+// Вычисление среднего рейтинга на основе комментариев
+const calculateAverageRating = (comments: Comment[]): number => {
+  if (comments.length === 0) return 0;
+  const sum = comments.reduce((acc, comment) => acc + comment.rating, 0);
+  return Number((sum / comments.length).toFixed(1));
+};
+
 export const mockTutors: Tutor[] = [
   {
     id: uuidv4(),
@@ -37,6 +89,8 @@ export const mockTutors: Tutor[] = [
     price: 1500,
     lessonType: 'both',
     phone: '+7 (900) 123-45-67',
+    comments: [],
+    rating: 0,
   },
   {
     id: uuidv4(),
@@ -47,6 +101,8 @@ export const mockTutors: Tutor[] = [
     price: 2000,
     lessonType: 'online',
     phone: '+7 (900) 234-56-78',
+    comments: [],
+    rating: 0,
   },
   {
     id: uuidv4(),
@@ -57,6 +113,8 @@ export const mockTutors: Tutor[] = [
     price: 1700,
     lessonType: 'offline',
     phone: '+7 (900) 345-67-89',
+    comments: [],
+    rating: 0,
   },
   {
     id: uuidv4(),
@@ -67,6 +125,8 @@ export const mockTutors: Tutor[] = [
     price: 2500,
     lessonType: 'online',
     phone: '+7 (900) 456-78-90',
+    comments: [],
+    rating: 0,
   },
   {
     id: uuidv4(),
@@ -77,6 +137,8 @@ export const mockTutors: Tutor[] = [
     price: 1800,
     lessonType: 'both',
     phone: '+7 (900) 567-89-01',
+    comments: [],
+    rating: 0,
   },
   {
     id: uuidv4(),
@@ -87,6 +149,8 @@ export const mockTutors: Tutor[] = [
     price: 1900,
     lessonType: 'offline',
     phone: '+7 (900) 678-90-12',
+    comments: [],
+    rating: 0,
   },
   {
     id: uuidv4(),
@@ -97,6 +161,8 @@ export const mockTutors: Tutor[] = [
     price: 1600,
     lessonType: 'online',
     phone: '+7 (900) 789-01-23',
+    comments: [],
+    rating: 0,
   },
   {
     id: uuidv4(),
@@ -107,6 +173,8 @@ export const mockTutors: Tutor[] = [
     price: 2100,
     lessonType: 'both',
     phone: '+7 (900) 890-12-34',
+    comments: [],
+    rating: 0,
   },
   
   {
@@ -118,5 +186,13 @@ export const mockTutors: Tutor[] = [
     price: 1400,
     lessonType: 'online',
     phone: '+7 (900) 901-23-45',
-  },
-];
+    comments: [],
+    rating: 0,
+  },].map(tutor => {
+  const comments = generateRandomComments(tutor.id);
+  return {
+    ...tutor,
+    comments,
+    rating: calculateAverageRating(comments),
+  };
+});

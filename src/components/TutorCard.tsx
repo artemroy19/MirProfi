@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tutor } from '../types';
-import { User } from 'lucide-react';
+import { User, Star } from 'lucide-react';
 import { formatPrice } from '../utils/helpers';
 
 interface TutorCardProps {
@@ -42,6 +42,11 @@ const TutorCard: React.FC<TutorCardProps> = ({ tutor, onClick }) => {
         <div className="tutor-footer">
           <div className="tutor-price">
             {formatPrice(tutor.price)}
+          </div>
+          
+          <div className="tutor-rating">
+            <Star size={16} fill={tutor.rating > 0 ? "var(--color-warning)" : "none"} color="var(--color-warning)" />
+            <span>{tutor.rating > 0 ? tutor.rating : 'Нет оценок'}</span>
           </div>
         </div>
       </div>

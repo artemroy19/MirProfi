@@ -711,23 +711,6 @@
   box-shadow: var(--shadow);
 }
 
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-primary);
-  background: none;
-  border: none;
-  padding: 0.5rem;
-  margin-bottom: 2rem;
-  border-radius: var(--radius);
-  transition: var(--transition);
-}
-
-.back-button:hover {
-  background-color: var(--color-secondary);
-}
-
 .tutor-details-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -741,7 +724,19 @@
   margin-bottom: 1rem;
   border: 4px solid var(--color-primary);
 }
+.tutor-details-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(var(--color-primary-rgb), 0.3);
+}
 
+
+.tutor-details-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
 .tutor-details-name {
   font-size: 2rem;
   color: var(--color-primary);
@@ -766,5 +761,137 @@
 
 .tutor-details-contact {
   margin-top: 3rem;
-  text-align: center;
+
+}
+
+.comment-form {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.comment-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-primary);
+}
+
+.rating-input {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rating-label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.stars {
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+.star-input {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.star-input:hover {
+  transform: scale(1.1);
+}
+
+.comment-input-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: rgba(249, 249, 255, 0.5);
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+
+
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comment {
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.comment-author {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.comment-rating {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.comment-text {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.comment-date {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+/* Tutor card rating */
+.tutor-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.tutor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 }
