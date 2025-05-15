@@ -279,7 +279,7 @@ const TutorForm: React.FC<TutorFormProps> = ({ addTutor }) => {
               id="price"
               className="slider-range"
               min="500"
-              max="5000"
+              max="3000"
               step="100"
               value={price}
               onChange={(e) => setPrice(parseInt(e.target.value))}
@@ -287,7 +287,7 @@ const TutorForm: React.FC<TutorFormProps> = ({ addTutor }) => {
             <div className="price-display">
               <span>500 ₽</span>
               <span><strong>{price} ₽</strong></span>
-              <span>5000 ₽</span>
+              <span>3000 ₽</span>
             </div>
           </div>
         </div>
