@@ -3,15 +3,16 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Заготовленные фотографии для преподавателей
 export const tutorPhotos = [
-  '/images/teacher1.png',
-  '/images/teacher2.jpg',
-  '/images/teacher3.jpeg',
-  '//images/teacher4.jpg',
-  '/images/teacher5.jpg',
-  '/images/teacher6.jpg',
-  '/images/teacher7.png',
-  '/images/teacher8.png',
-  '/images/teacher9.png',
+  `${import.meta.env.BASE_URL}images/teacher1.png`,
+  `${import.meta.env.BASE_URL}images/teacher2.jpg`,
+  `${import.meta.env.BASE_URL}images/teacher3.jpeg`,
+  // Уберите лишний слеш в начале здесь:
+  `${import.meta.env.BASE_URL}images/teacher4.jpg`,
+  `${import.meta.env.BASE_URL}images/teacher5.jpg`,
+  `${import.meta.env.BASE_URL}images/teacher6.jpg`,
+  `${import.meta.env.BASE_URL}images/teacher7.png`,
+  `${import.meta.env.BASE_URL}images/teacher8.png`,
+  `${import.meta.env.BASE_URL}images/teacher9.png`,
 ];
 
 export const subjects = [
