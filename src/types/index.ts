@@ -5,8 +5,9 @@ export type Role = 'student' | 'tutor';
 
 // User authentication state
 export interface User {
+  id: string;
   username: string;
-  isLoggedIn: boolean;
+  role: Role;
 }
 
 // Comment type

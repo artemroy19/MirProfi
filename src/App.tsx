@@ -4,9 +4,10 @@ import TutorForm from './components/TutorForm';
 import TutorList from './components/TutorList';
 import Login from './components/Login';
 import About from './components/About';
-import { Role, Tutor, AuthFormData, Comment } from './types';
+import { Role, Tutor, AuthFormData, Comment, User } from './types';
 import { mockTutors } from './utils/mockData';
 import { createNewTutor } from './utils/helpers';
+import { getCurrentUser, login, logout } from './utils/auth';
 import './styles/index.css';
 import './styles/components.css';
 import './styles/animations.css';
@@ -15,22 +16,25 @@ function App() {
   const [currentRole, setCurrentRole] = useState<Role>('student');
   const [tutors, setTutors] = useState<Tutor[]>(mockTutors);
   const [initialized, setInitialized] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
+  const [user, setUser] = useState<User | null>(null);
   const [showAbout, setShowAbout] = useState(false);
 
   useEffect(() => {
+    const storedUser = getCurrentUser();
+    if (storedUser) {
+      setUser(storedUser);
+    }
     setInitialized(true);
   }, []);
 
   const handleLogin = (data: AuthFormData) => {
-    setUsername(data.username);
-    setIsLoggedIn(true);
+    const user = login(data.username, data.password);
+    setUser(user);
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUsername('');
+    logout();
+    setUser(null);
     setShowAbout(false);
   };
 
@@ -73,7 +77,7 @@ function App() {
     });
   };
 
-  if (!isLoggedIn) {
+  if (!user) {
     return <Login onLogin={handleLogin} />;
   }
 
@@ -86,7 +90,7 @@ function App() {
       <Header 
         currentRole={currentRole} 
         switchRole={switchRole}
-        username={username}
+        username={user.username}
         onLogoClick={() => setShowAbout(true)}
         onLogout={handleLogout}
       />
@@ -97,7 +101,7 @@ function App() {
         ) : (
           <TutorList 
             tutors={tutors}
-            currentUsername={username}
+            currentUsername={user.username}
             onAddComment={handleAddComment}
           />
         )}
