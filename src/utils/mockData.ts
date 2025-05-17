@@ -3,15 +3,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Заготовленные фотографии для преподавателей
 export const tutorPhotos = [
-  '/src/images/teacher1.png',
-  '/src/images/teacher2.jpg',
-  '/src/images/teacher3.jpeg',
-  '/src/images/teacher4.jpg',
-  '/src/images/teacher5.jpg',
-  '/src/images/teacher6.jpg',
-  '/src/images/teacher7.png',
-  '/src/images/teacher8.png',
-  '/src/images/teacher9.png',
+  '/images/teacher1.png',
+  '/images/teacher2.jpg',
+  '/images/teacher3.jpeg',
+  '//images/teacher4.jpg',
+  '/images/teacher5.jpg',
+  '/images/teacher6.jpg',
+  '/images/teacher7.png',
+  '/images/teacher8.png',
+  '/images/teacher9.png',
 ];
 
 export const subjects = [
