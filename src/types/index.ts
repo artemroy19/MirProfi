@@ -1,16 +1,11 @@
-// Type definitions for the application
-
-// User role type
 export type Role = 'student' | 'tutor';
 
-// User authentication state
 export interface User {
   id: string;
   username: string;
   role: Role;
 }
 
-// Comment type
 export interface Comment {
   id: string;
   tutorId: string;
@@ -20,7 +15,6 @@ export interface Comment {
   createdAt: Date;
 }
 
-// Tutor profile data
 export interface Tutor {
   id: string;
   name: string;
@@ -35,7 +29,6 @@ export interface Tutor {
   comments: Comment[];
 }
 
-// Filter options for tutor search
 export interface FilterOptions {
   subject: string;
   minPrice: number;
@@ -43,7 +36,6 @@ export interface FilterOptions {
   lessonType: string;
 }
 
-// Authentication form data
 export interface AuthFormData {
   username: string;
   password: string;

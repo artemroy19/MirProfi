@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import TutorForm from './components/TutorForm';
 import TutorList from './components/TutorList';

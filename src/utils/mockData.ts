@@ -1,12 +1,11 @@
 import { Tutor, Comment } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
-// Заготовленные фотографии для преподавателей
+
 export const tutorPhotos = [
   `${import.meta.env.BASE_URL}images/teacher1.png`,
   `${import.meta.env.BASE_URL}images/teacher2.jpg`,
   `${import.meta.env.BASE_URL}images/teacher3.jpeg`,
-  // Уберите лишний слеш в начале здесь:
   `${import.meta.env.BASE_URL}images/teacher4.jpg`,
   `${import.meta.env.BASE_URL}images/teacher5.jpg`,
   `${import.meta.env.BASE_URL}images/teacher6.jpg`,
@@ -27,6 +26,7 @@ export const subjects = [
   'География',
   'Обществознание',
 ];
+
 
 // Генерация случайных комментариев
 const generateRandomComments = (tutorId: string): Comment[] => {
@@ -80,7 +80,8 @@ const calculateAverageRating = (comments: Comment[]): number => {
   return Number((sum / comments.length).toFixed(1));
 };
 
-export const mockTutors: Tutor[] = [
+
+const baseTutors: Omit<Tutor, 'comments' | 'rating'>[] = [
   {
     id: uuidv4(),
     name: 'Анна Смирнова',
@@ -90,8 +91,6 @@ export const mockTutors: Tutor[] = [
     price: 1500,
     lessonType: 'both',
     phone: '+7 (900) 123-45-67',
-    comments: [],
-    rating: 0,
   },
   {
     id: uuidv4(),
@@ -102,8 +101,6 @@ export const mockTutors: Tutor[] = [
     price: 2000,
     lessonType: 'online',
     phone: '+7 (900) 234-56-78',
-    comments: [],
-    rating: 0,
   },
   {
     id: uuidv4(),
@@ -114,20 +111,16 @@ export const mockTutors: Tutor[] = [
     price: 1700,
     lessonType: 'offline',
     phone: '+7 (900) 345-67-89',
-    comments: [],
-    rating: 0,
   },
   {
     id: uuidv4(),
     name: 'Дмитрий Козлов',
     photo: tutorPhotos[3],
     description: 'Программист с 15-летним стажем. Обучаю основам программирования, веб-разработке, алгоритмам и структурам данных.',
-    subjects: ['Информатика'],
+    subjects: ['Информатика','Математика'],
     price: 2500,
     lessonType: 'online',
     phone: '+7 (900) 456-78-90',
-    comments: [],
-    rating: 0,
   },
   {
     id: uuidv4(),
@@ -138,8 +131,6 @@ export const mockTutors: Tutor[] = [
     price: 1800,
     lessonType: 'both',
     phone: '+7 (900) 567-89-01',
-    comments: [],
-    rating: 0,
   },
   {
     id: uuidv4(),
@@ -150,8 +141,6 @@ export const mockTutors: Tutor[] = [
     price: 1900,
     lessonType: 'offline',
     phone: '+7 (900) 678-90-12',
-    comments: [],
-    rating: 0,
   },
   {
     id: uuidv4(),
@@ -162,8 +151,6 @@ export const mockTutors: Tutor[] = [
     price: 1600,
     lessonType: 'online',
     phone: '+7 (900) 789-01-23',
-    comments: [],
-    rating: 0,
   },
   {
     id: uuidv4(),
@@ -174,8 +161,6 @@ export const mockTutors: Tutor[] = [
     price: 2100,
     lessonType: 'both',
     phone: '+7 (900) 890-12-34',
-    comments: [],
-    rating: 0,
   },
   
   {
@@ -187,9 +172,11 @@ export const mockTutors: Tutor[] = [
     price: 1400,
     lessonType: 'online',
     phone: '+7 (900) 901-23-45',
-    comments: [],
-    rating: 0,
-  },].map(tutor => {
+  },
+];
+
+// Создаем окончательный массив репетиторов с комментариями и рейтингом
+export const mockTutors: Tutor[] = baseTutors.map(tutor => {
   const comments = generateRandomComments(tutor.id);
   return {
     ...tutor,
